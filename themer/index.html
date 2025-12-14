@@ -19,6 +19,7 @@
         var values = {
             "bg":"1D0A1F",
             "sn":"F5EBFF",
+            "bo":"FF00DD",
             "rw":"B750D1",
             "cs":"FF00DD",
             "se":"A55B8F",
@@ -46,6 +47,7 @@
         testset("bg");
         testset("sn");
         testset("rw");
+        testset("bo");
         testset("cs");
         testset("se");
         testset("s0");
@@ -56,6 +58,7 @@
 
         var $bg    = $("#bg");
         var $sn    = $("#sn");
+        var $bo    = $("#bo");
         var $rw    = $("#rw");
         var $cs    = $("#cs");
         var $se    = $("#se");
@@ -112,6 +115,7 @@
           //hex values
           var bgh  =  "#"+values.bg;
           var snh  =  "#"+values.sn;
+          var boh  =  "#"+values.bo;
           var rwh  =  "#"+values.rw;
           var csh  =  "#"+values.cs;
           var seh  =  "#"+values.se;
@@ -129,9 +133,11 @@
           $(".cctxt").css({color:cch});
           $(".r1txt").css({color:r1h});
           $(".r2txt").css({color:r2h});
+          $(".botxt").css({color:boh});
           $(".bgback").css({"background-color":bgh});
           $(".snback").css({"background-color":snh});
           $(".rwback").css({"background-color":rwh});
+          $(".boback").css({"background-color":boh});
           $(".csback").css({"background-color":csh});
           $(".seback").css({"background-color":seh});
           $(".s0back").css({"background-color":s0h});
@@ -142,6 +148,7 @@
           //set input vals
           $bg.val(bgh);
           $sn.val(snh);
+          $bo.val(boh);
           $rw.val(rwh);
           $cs.val(csh);
           $se.val(seh);
@@ -150,15 +157,16 @@
           $r1.val(r1h);
           $r2.val(r2h);
 
-          var txt = '<BACKGROUND value="'+values.bg+'" />\n'+
-                    '<FOREGROUND value="'+values.sn+'" />\n'+
-                    '<HICOLOR1 value="'+values.rw+'" />\n'+
-                    '<HICOLOR2 value="'+values.cs+'" />\n'+
+          var txt = '<BACKGROUND  value="'+values.bg+'" />\n'+
+                    '<FOREGROUND  value="'+values.sn+'" />\n'+
+                    '<BORDER      value="'+values.bo+'" />\n'+
+                    '<HICOLOR1    value="'+values.rw+'" />\n'+
+                    '<HICOLOR2    value="'+values.cs+'" />\n'+
                     '<SONGVIEW_FE value="'+values.se+'" />\n'+
                     '<SONGVIEW_00 value="'+values.s0+'" />\n'+
                     '<CURSORCOLOR value="'+values.cc+'" />\n'+
-                    '<ROWCOLOR1 value="'+values.r1+'" />\n'+
-                    '<ROWCOLOR2 value="'+values.r2+'" />\n';
+                    '<ROWCOLOR1   value="'+values.r1+'" />\n'+
+                    '<ROWCOLOR2   value="'+values.r2+'" />\n';
 
           $("textarea").val(txt);
 
@@ -167,7 +175,7 @@
 
         var parsecode = function(str){
          var arr = str.split("\"");
-          if(arr.length > 18){
+          if(arr.length > 19){
             values = {
               "bg": arr[1],
               "sn": arr[3],
@@ -177,7 +185,8 @@
               "s0": arr[11],
               "cc": arr[13],
               "r1": arr[15],
-              "r2": arr[17]
+              "r2": arr[17],
+              "bo": arr[18]
             };
             update();
           }
@@ -230,7 +239,7 @@
 
   textarea{
     width: 100%;
-    height: 150px;
+    height: 19git 0px;
   }
   h1, h2{
    text-align: center;
@@ -322,7 +331,8 @@
     <form id="colorpickers">
       <span class="title">Background:  </span><span class="bgback box"></span><input type="text" id="bg" class="text" name="background" value="" /><br/>
       <span class="title">Foreground:  </span><span class="snback box"></span><input type="text" id="sn" class="text" name="song" value="" /><br/>
-      <span class="title">Row Count:   </span><span class="rwback box"></span><input type="text" id="rw" class="text" name="row" value="" /><br/>
+      <span class="title">Border:      </span><span class="boback box"></span><input type="text" id="bo" class="text" name="border" value="" /><br/>
+      <span class="title">Highligt:    </span><span class="rwback box"></span><input type="text" id="rw" class="text" name="row" value="" /><br/>
       <span class="title">Cursor:      </span><span class="csback box"></span><input type="text" id="cs" class="text" name="cursor" value="" /><br/>
       <span class="title">Songview FE: </span><span class="seback box"></span><input type="text" id="se" class="text" name="songview_fe" value="" /><br/>
       <span class="title">Songview 00: </span><span class="s0back box"></span><input type="text" id="s0" class="text" name="songview_00" value="" /><br/>
@@ -334,7 +344,7 @@
   <div id="noninputs">
     <div id="visual">
 <pre class="main bgback sntxt">
-Song - BETA
+Song - Float-Fi - WildDope
 
 
      <span class="r2txt">00</span> -- 05 12 12 <span class="bgtext s0txt">00</span> -- -- --  ----
